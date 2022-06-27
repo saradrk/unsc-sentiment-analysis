@@ -1,5 +1,5 @@
 import csv
-from re import sub
+from re import sub, split
 from typing import Any, List, Union
 
 def get_debates_by_theme(theme: Union[str, List[str]], unsc_meta_path: str):
@@ -63,13 +63,10 @@ def __remove_speaker(text: str):
     speech = speech.strip()
     return speech
 
+# Stolen from https://github.com/glaserL/unsc-ne to have matching paragraph & sentence IDs
 def __split_paragraphs(text: str):
     """Return a list of paragraph strings."""
-    # create list of paragraph strings
-    speech = text.split('\n\n')
-    # merge each paragraph
-    out_speech = [paragraph.replace("\n", " ") for paragraph in speech]
-    return out_speech
+    return [f"{p}." for p in split(r"\.\n{2,}", text)]
 
 def structure_paragraphs_and_sentences(speech: str, model: Any):
     """Structure a speech into paragraphs and sentences.

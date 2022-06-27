@@ -77,7 +77,7 @@ def find_sentiment_entries(sentence: str):
 
     Return
     ------
-    str, list(tuple(str, str)): the sentence, the sentiment words and their polarity.
+    str, list(tuple(str, str)): the sentence, the sentiment words and their polarities.
     """
     sentence = preprocess(sentence)
     sentence_seperated = sentence.split()
@@ -95,6 +95,13 @@ def find_sentiment_entries(sentence: str):
                 else:
                     out_entries.extend([(entry[0], entry[3]) for t in sentence_seperated if t.startswith(entry[0])])
             else:
-                out_entries.extend([(entry[0], entry[3]) for i in range((len(sentence.split(entry[0]))-1))])
+                # lex entry is not a prefix
+                if entry[2] == "0":
+                    pattern_in_sent = entry[0] + " "
+                    out_entries.extend([(entry[0], entry[3]) for i in range((len(sentence.split(pattern_in_sent))-1))])
+                    if sentence.endswith(entry[0]):
+                        out_entries.append((entry[0], entry[3]))
+                else:
+                    out_entries.extend([(entry[0], entry[3]) for i in range((len(sentence.split(entry[0]))-1))])
     lex.close()    
     return sentence, out_entries
