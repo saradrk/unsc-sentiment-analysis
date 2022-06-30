@@ -26,7 +26,7 @@ def annotate_speech(speech_meta: list):
     speech_filepath = speech_meta[1]
     # get out file path
     sentiment_filepath = speech_meta[2]
-    # check if speech has already been annotated
+    # If speech has already been annotated get sentiment entries and calculate sentiment score
     if path.isfile(sentiment_filepath):
         speech = read_speech_file(speech_filepath)
         with open(sentiment_filepath, "r", encoding="utf-8") as speech_annotations_file:
@@ -34,6 +34,7 @@ def annotate_speech(speech_meta: list):
             speech_annotations_file.close()
         polarities_in_speech = [line.strip().split("\t")[4] for line in annotation_lines[1:]]
         sentiment_score = calc_sentiment_score(preprocess(speech), polarities_in_speech)
+        # Add new line to document level annotation file
         with open(SPEECH_ANNOTATIONS, "a", encoding="utf-8") as sentiment_per_speech_file:
             sps_writer = writer(sentiment_per_speech_file, delimiter='\t')
             sps_writer.writerow([filename, speech_filepath, sentiment_score, sentiment_filepath])
@@ -41,6 +42,7 @@ def annotate_speech(speech_meta: list):
 
 def main():
     if not path.isfile(SPEECH_ANNOTATIONS):
+        print(f"Start document level annotation... \n")
         with open(SPEECH_ANNOTATIONS, "w", encoding="utf-8") as f:
             fwriter = writer(f, delimiter='\t')
             fwriter.writerow((
@@ -56,6 +58,9 @@ def main():
         pool = mp.Pool(mp.cpu_count())
         for _ in tqdm.tqdm(pool.imap_unordered(annotate_speech, speeches_meta),total=len(speeches_meta)):
             pass
+        print(f"\nFinished document level annotation. \n")
+    else:
+        print(f"\nSpeeches already annotated. Check {SPEECH_ANNOTATIONS}\n")
 
 if __name__ == "__main__":
     main()

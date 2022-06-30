@@ -34,13 +34,14 @@ def get_debates_by_theme(theme: Union[str, List[str]], unsc_meta_path: str):
     return debates
 
 def preprocess(text: str):
-    """Remove punctuation and transform to lower case.
+    """Remove punctuation, transform to lower case and remove newlines.
     
     Args
     ----
     text (str): The text to preprocess.
     """
     text = sub(r'[^\w\s]', '', text)
+    text = sub('\n', ' ', text)
     return text.lower()
 
 def read_speech_file(path: str):

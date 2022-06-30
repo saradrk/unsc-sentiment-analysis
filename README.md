@@ -2,22 +2,19 @@
 
 A lexicon-based sentiment analysis tool for the UN Security Council Debates.  
 
-
-
 ## Requirements
 This project was developed with Python 3.8.
 
 * Install **`requirements.txt`**
-* Install spaCy language model: [en_core_web_sm](https://spacy.io/models/en)
 * Download [UNSC Debates](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/KGVSYH)
 * * Choose "Original Format ZIP" download option
 * * Recommendation: Move to **`data/`** directory
-* * Unpack ZIP & extract **`speeches.tar`**
-* * Adjust path to **`speeches/`** in **`config.py`**
+* * Unpack ZIP
+* * Adjust path to **`speeches.tar`** in **`config.py`**
 * Download [Lexicoder Sentiment Dictionary](http://www.snsoroka.com/data-lexicoder/)
 * * Recommendation: Move to **`data/`** directory
+* * Unpack ZIP
 * * Adjust paths to **`LSD2015.lc3`** and **`LSD2015_NEG.lc3`** in **`config.py`**
-Clone this directory and navigate to it in your CLI.
 
 ## Usage
 Run each script once in the following order: 
