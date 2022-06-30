@@ -31,7 +31,7 @@ python3 make_sentence_annotations.py
 python3 make_speech_annotations.py
 ```  
 
-## Sources
+## Data Sources
 Schoenfeld, Mirco; Eckhard, Steffen; Patz, Ronny; Meegdenburg, Hilde van; Pires, Antonio, 2019, "The UN Security Council Debates", https://doi.org/10.7910/DVN/KGVSYH, Harvard Dataverse, V5, UNF:6:zwZdSPbcmfAbjIiKdqzgig== [fileUNF]
 
 Young, L. and Soroka, S. 2012. Lexicoder Sentiment Dictionary.
