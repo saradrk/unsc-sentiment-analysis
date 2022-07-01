@@ -1,3 +1,8 @@
+# Bachelorarbeit
+# Sara Derakhshani
+# Matrikelnummer: 792483
+# Abgabe: 01.07.2022 
+
 from csv import writer
 import multiprocessing as mp
 from os import path
@@ -42,7 +47,7 @@ def annotate_speech(speech_meta: list):
 
 def main():
     if not path.isfile(SPEECH_ANNOTATIONS):
-        print(f"Start document level annotation... \n")
+        print(f"\n Start document level annotation... \n")
         with open(SPEECH_ANNOTATIONS, "w", encoding="utf-8") as f:
             fwriter = writer(f, delimiter='\t')
             fwriter.writerow((

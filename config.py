@@ -1,3 +1,9 @@
+# Bachelorarbeit
+# Sara Derakhshani
+# Matrikelnummer: 792483
+# Abgabe: 01.07.2022 
+
+
 # Adjust the paths to your local files
 
 UNPROCESSED_LSD = "data/LSDaug2015/LSD2015.lc3"

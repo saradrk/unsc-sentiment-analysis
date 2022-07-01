@@ -1,3 +1,8 @@
+# Bachelorarbeit
+# Sara Derakhshani
+# Matrikelnummer: 792483
+# Abgabe: 01.07.2022 
+
 from csv import writer
 import multiprocessing as mp
 from os import listdir, makedirs, path
@@ -74,11 +79,12 @@ def annotate(speech_path: str):
 def main():
     if not path.isdir(SPEECHES_DIR):
         makedirs(SPEECHES_DIR)
-    print(f"\nStart extracting {SPEECHES_TAR}... \n")
-    with tarfile.open(SPEECHES_TAR) as tar:
-        for member in tqdm.tqdm(iterable=tar.getmembers(), total=len(tar.getmembers())):
-            tar.extract(member=member, path=SPEECHES_DIR)
-    print(f"\nFinished extracting speeches to {SPEECHES_DIR}. \n")
+    if len(listdir(SPEECHES_DIR)) < 1:
+        print(f"\nStart extracting {SPEECHES_TAR}... \n")
+        with tarfile.open(SPEECHES_TAR) as tar:
+            for member in tqdm.tqdm(iterable=tar.getmembers(), total=len(tar.getmembers())):
+                tar.extract(member=member, path=SPEECHES_DIR)
+        print(f"\nFinished extracting speeches to {SPEECHES_DIR}. \n")
     if not path.isdir(ANNOTATIONS_DIR):
         makedirs(ANNOTATIONS_DIR)
     if not path.isfile(SENTENCE_ANNOTATIONS):
@@ -103,8 +109,7 @@ def main():
             pass
         print(f"\nFinished sentence level annotation. \n")
     else:
-        print(f"Sentences already annotated. Check {SENTENCE_ANNOTATIONS} \n")
-
+        print(f"\nSentences already annotated. Check {SENTENCE_ANNOTATIONS} \n")
 
 if __name__ == "__main__":
     main()

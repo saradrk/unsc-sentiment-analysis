@@ -1,3 +1,4 @@
+<!--- Bachelorarbeit, Sara Derakhshani, Matrikelnummer: 792483, Abgabe: 01.07.2022 --->
 # Sentiment Analysis of UNSC Speeches
 
 A lexicon-based sentiment analysis tool for the UN Security Council Debates.  

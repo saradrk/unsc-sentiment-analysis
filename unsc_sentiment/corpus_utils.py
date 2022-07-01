@@ -1,3 +1,8 @@
+# Bachelorarbeit
+# Sara Derakhshani
+# Matrikelnummer: 792483
+# Abgabe: 01.07.2022 
+
 import csv
 from re import sub, split
 from typing import Any, List, Union
