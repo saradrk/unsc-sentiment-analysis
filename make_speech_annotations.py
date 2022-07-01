@@ -42,7 +42,7 @@ def annotate_speech(speech_meta: list):
 
 def main():
     if not path.isfile(SPEECH_ANNOTATIONS):
-        print(f"Start document level annotation... \n")
+        print(f"\nStart document level annotation... \n")
         with open(SPEECH_ANNOTATIONS, "w", encoding="utf-8") as f:
             fwriter = writer(f, delimiter='\t')
             fwriter.writerow((
